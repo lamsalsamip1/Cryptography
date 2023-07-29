@@ -2,14 +2,14 @@
 def caesar(text,mode):
     result=''
     for letter in text:
-        if(letter!=' '):
-            code=ord(letter.lower())-97
+        if(letter.isalpha() and letter!=' '):
+            code=ord(letter)-97 if letter.islower() else ord(letter)-65
             if(mode==1): #Encrypt
                 enc=(code+3)%26
                
             else: #Decrypt
                 enc=(code-3)%26
-            out=chr(enc+97)
+            out=chr(enc+97)if letter.islower() else chr(enc+65)
         else:
             out=letter
         result+=out
